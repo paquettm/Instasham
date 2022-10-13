@@ -1,11 +1,5 @@
-<html>
-<head>
-	<title>Login</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-</head>
+<?php $this->view('header', 'Instasham'); ?>
 
-<body>
 <?php
 if(isset($_GET['error'])){
 ?>
@@ -17,10 +11,14 @@ if(isset($_GET['error'])){
 ?>
 
 <form action='' method='post'>
-	<label>Username:<input type="text" name="username" /></label><br>
-	<label>Password:<input type="password" name="password" /></label><br>
-	<input type="submit" name="action" value="Login" />
+	<div class="form-group">
+		<label class="col-sm-2 col-form-label">Username:<input class='form-control' type="text" name="username" /></label>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 col-form-label">Password:<input class='form-control' type="password" name="password" /></label>
+	</div>
+	<input type="submit" name="action" value="Login" class='btn btn-primary' />
 </form>
+<a href='/User/register'>No account? Register.</a>
 
-</body>
-</html>
+<?php $this->view('footer'); ?>

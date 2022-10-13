@@ -3,15 +3,20 @@ namespace app\controllers;
 
 class Main extends \app\core\Controller{
 	public function index(){
-		$this->view('Main/index');
+		//To see interesting publications, as a person or user, I can see a list of all publications, most recent first.
+		$publication = new \app\models\Publication();
+		$publications = $publication->getAll();
+		$this->view('Main/index', $publications);
 	}
 
-	public function index2(){
-		$this->view('Main/index2');
+	public function search(){
+		//To find interesting publications, as a person or user, I can search for captions by search terms.
+		$publication = new \app\models\Publication();
+		$publications = $publication->search($_GET['search_term']);
+		$this->view('Main/index', $publications);
 	}
 
 	public function foods(){
-
 		//process the form data if it is submitted
 		if(isset($_POST['action'])){
 			//create a Food object
