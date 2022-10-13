@@ -52,6 +52,7 @@ class Publication extends \app\core\Controller{
 		$publication = new \app\models\Publication();
 		$publication = $publication->get($publication_id);
 		if($publication->profile_id == $_SESSION['profile_id']){
+			$publication->deleteComments();
 			unlink("images/$publication->picture");
 			$publication->delete();
 		}

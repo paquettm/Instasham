@@ -51,6 +51,12 @@ class Publication extends \app\core\Model{
 		$STMT->execute(['publication_id'=>$this->publication_id]);
 	}
 
+	public function deleteComments(){
+		$SQL = "DELETE FROM comment WHERE publication_id=:publication_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['publication_id'=>$this->publication_id]);
+	}
+
 	public function getProfile(){
 		$SQL = "SELECT * FROM profile WHERE profile_id=:profile_id";
 		$STMT = self::$_connection->prepare($SQL);
