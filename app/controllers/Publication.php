@@ -19,9 +19,13 @@ class Publication extends \app\core\Controller{
 			$publication->caption = $_POST['caption'];
 			$publication->profile_id = $_SESSION['profile_id'];//FK
 			$filename = $this->saveFile($_FILES['picture']);
-			$publication->picture = $filename;
-			$publication->insert();
-			header('location:/Profile/index/');
+			if($filename){
+				$publication->picture = $filename;
+				$publication->insert();
+				header('location:/Profile/index/');
+			}else{
+				header('location:/Publication/create/');
+			}
 			//TODO: back to where I was?
 		}else{
 			$this->view('Publication/create');
