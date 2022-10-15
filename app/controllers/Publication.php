@@ -1,8 +1,6 @@
 <?php
 namespace app\controllers;
 
-#[\app\filters\Login]
-#[\app\filters\Profile]
 class Publication extends \app\core\Controller{
 
 	#[\app\filters\JustLeave]
@@ -10,6 +8,8 @@ class Publication extends \app\core\Controller{
 		//TODO: find a purpose for this index or place create here
 	}
 
+	#[\app\filters\Login]
+	#[\app\filters\Profile]
 	public function create(){
 		//To make publications, as a user, I can upload my picture and create my caption.
 		if(isset($_POST['action'])){
@@ -32,6 +32,8 @@ class Publication extends \app\core\Controller{
 		}
 	}
 
+	#[\app\filters\Login]
+	#[\app\filters\Profile]
 	public function edit($publication_id){
 		//To correct publications, as a user, I can edit my caption.
 		$publication = new \app\models\Publication();
@@ -51,6 +53,8 @@ class Publication extends \app\core\Controller{
 		$this->view('Publication/details', $publication);
 	}
 
+	#[\app\filters\Login]
+	#[\app\filters\Profile]
 	public function delete($publication_id){
 		//To avoid embarrassment, as a user, I can delete my publication.
 		$publication = new \app\models\Publication();
